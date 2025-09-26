@@ -10,105 +10,99 @@ namespace OOP
     {
         static void Main(string[] args)
         {
-            // проста програма
-            /*
-             * rkgkrjg
-             * grg
-             * rg
-             * grgr
-             */
-
-            //тип_даних ім'я змінної;
-            int value;
-
-            // назва змінної - починається з літери або _
-            // може містити будь-які символи, цифри та знак _
-            //string address;
-            //int value;
-            //int Value = 10;
-            //int myFirstValue;
-            //value = 5;
-            //Value = 5;
-            //Console.WriteLine(value);
-
-            //bool a1 = (3 < 6) ^ (4<8); 
-
-            //int a = 5;
-            //int b = 10;
-            //int result = a / b;
-            //Console.WriteLine($"gg: {result}");
-
-            //byte x = 2;
-            //byte y = 2;
-            //bool h = x >= y;
-
-            //bool l = !h;
-
-            //Конвертація
-            //int number = Convert.ToInt32(Console.ReadLine());
-            //float number2 = float.Parse(Console.ReadLine());
-
-
-            //double a = 9;
-            //double b = 2;
-            //a += 5; //=  a = a + 5
-            //a--;
-
-            //Console.WriteLine(Math.Sqrt(a)); //корінь
-            //Console.WriteLine(Math.Pow(a, b)); // до степеня
-            //Console.WriteLine(Math.Abs(a)); // модуль
-
-            //double c = 9.23;
-            //Console.WriteLine(Math.Round(c)); // округлення
-            //Console.WriteLine(Math.Floor(c)); // округлення до меншого
-            //Console.WriteLine(Math.Ceiling(c)); // округлення до більшого
-
-            //Math.Min(a, b);
-            //Math.Max(a, b);
-
-            //Console.WriteLine($"gg:");
-
-            //Random rnd  = new Random();
-            //int rndNumb = rnd.Next(1,11);
-
-            //Console.WriteLine("Улюблене число:");
-
-            //Console.WriteLine("Твоє число 1: " + number);
-            //Console.WriteLine("Твоє число 2: {0}, {1}", number, number);
-            //Console.WriteLine($"Твоє число 3: {number}");
-            Console.WriteLine($"Перше число");
-            int a = Convert.ToInt32(Console.ReadLine());
-
-            Console.WriteLine($"Друге число");
-            int b = Convert.ToInt32(Console.ReadLine());
-
-            if (a > b | a < b)
-                Console.WriteLine("Число більше!");
-            else if (a == b)
-            {
-                Console.WriteLine("Вони рівні!!!");
-            }
-            else
-            {
-                Console.WriteLine("Число менше!");
-            }
-
-            //Console.WriteLine($"число");
-            //int b = Convert.ToInt32(Console.ReadLine());
-
-            //switch (b) { 
-            //    case 0:
-            //        Console.WriteLine("Це 0!");
-            //        break;
-            //    case 1:
-            //        Console.WriteLine("Це 1!");
-            //        break;
-            //    default: Console.WriteLine("Не то!");
-            //        break;
+            // FOR
+            //for (int i = 0; i < 100; i++)
+            //{ 
+            //    Console.WriteLine(i);
             //}
 
             //Console.ReadLine();
 
+            //// WHILE
+            //int i = 5;
+            //while (i < 4)
+            //{
+            //    Console.WriteLine("WHILE: "+ i);
+            //    i++;
+            //}
+
+            //// DO WHILE
+            //do
+            //{
+            //    Console.WriteLine("DO WHILE: " + i);
+            //} while (i < 4);
+
+            //Console.ReadLine();
+
+
+            //// FOREACH
+            //string[] names = { "Maksym", "Andrew", "Tamara" };
+
+            //foreach (string name in names)
+            //{
+            //    Console.WriteLine("Здоров! "+ name);
+            //}
+
+            //Console.ReadLine();
+
+            // КЕРУВАННЯ ВИКОНАННЯМ ЦИКЛУ
+            //for (int i = 0; i < 10; i++)
+            //{
+            //    if (i == 2) { continue; }
+            //    if (i % 2 == 0) { continue; }
+            //    if (i == 7) { break; }
+
+            //    Console.WriteLine(i);
+            //}
+
+            //Console.ReadLine();
+
+            // ВКЛАДЕНІ ЦИКЛИ
+            //for (int x = 1; x < 10; x++)
+            //{
+            //    for(int y = 1; y <= 10; y++) 
+            //    {
+            //        Console.WriteLine($"{x} x {y} = {x*y}");
+            //    }
+            //    Console.WriteLine();
+            //}
+
+            //Console.ReadLine();
+
+            // MAСИВИ
+            //int[] numbers = new int[10];
+            ////Console.WriteLine(numbers[0]);
+
+            //int[] numbers2 = new int[] {1,2,3,4,0};
+            ////Console.WriteLine(numbers2[0]);
+
+            //int[] numbers3 = { 3, 4, 3, 4, 0 };
+
+            ////for (int i = 0; i < numbers.Length; i++)
+            ////{
+            ////    Console.WriteLine(numbers3[i]);
+            ////}
+
+            //foreach (int number in numbers3)
+            //{
+            //    Console.WriteLine(number);
+            //}
+            //Console.ReadLine();
+
+            //string[] names = { "Masha", "Petro", "Vasil" };
+
+            //Person[] people = new Person[24];
+
+            // МЕТОДИ ДЛЯ МAСИВІВ
+            //int[] numbers = { 343, 2, 3, 4, 0, 12, 1, 55 };
+            //Console.WriteLine("Довжина масиву " + numbers.Length);
+            //Console.WriteLine("Максимальне значення " + numbers.Max());
+            //Console.WriteLine("Мінімальне значення " + numbers.Min());
+            //Console.WriteLine("Максимальне значення " + numbers.Max());
+            //Console.WriteLine("Розвертаємо масив");
+            //Console.WriteLine("Сортуємо масив");
+
+            //var ff = Array.Sort(numbers);
         }
     }
 }
