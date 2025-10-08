@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,105 +11,124 @@ namespace OOP
     {
         static void Main(string[] args)
         {
-            // проста програма
-            /*
-             * rkgkrjg
-             * grg
-             * rg
-             * grgr
-             */
+            //МЕТОД З ПАРАМЕТРОМ
+            //SaySomething("Maksym");
+            //SaySomething("Andriy");
 
-            //тип_даних ім'я змінної;
-            int value;
+            //МЕТОД З ПАРАМЕТРОМ ЗА ЗАМОВЧУВАННЯМ
+            //int sum1 = Add(5);
+            //SaySomething(Convert.ToString(sum1));
 
-            // назва змінної - починається з літери або _
-            // може містити будь-які символи, цифри та знак _
-            //string address;
-            //int value;
-            //int Value = 10;
-            //int myFirstValue;
-            //value = 5;
-            //Value = 5;
-            //Console.WriteLine(value);
+            //ПЕРЕВАНТАЖЕНИЙ МЕТОД (INT)
+            //int sum2 = Add(5,7);
+            //SaySomething(Convert.ToString(sum2));
 
-            //bool a1 = (3 < 6) ^ (4<8); 
+            //ПЕРЕВАНТАЖЕНИЙ МЕТОД (DOUBLE)
+            //double sum3 = Add(5.65, 7.21);
+            //SaySomething(Convert.ToString(sum3));
 
-            //int a = 5;
-            //int b = 10;
-            //int result = a / b;
-            //Console.WriteLine($"gg: {result}");
+            //ПЕРЕВАНТАЖЕНИЙ МЕТОД (STRING)
+            //string sum4 = Add("1", "4");
+            //SaySomething(sum4);
 
-            //byte x = 2;
-            //byte y = 2;
-            //bool h = x >= y;
+            Book firstBook = new Book();
+            firstBook.PrintInfo();
 
-            //bool l = !h;
+            Book secondBook = new Book("OOП", "Deineka Maksym");
+            secondBook.PrintInfo();
 
-            //Конвертація
-            //int number = Convert.ToInt32(Console.ReadLine());
-            //float number2 = float.Parse(Console.ReadLine());
+            Book thirdBook = new Book("OOП 2.0", "Vinnychuk Igor", 500);
+            thirdBook.PrintInfo();
+
+            secondBook.Price = 45;
+            secondBook.PrintInfo();
+            secondBook.Discount();
+            secondBook.PrintInfo();
+
+            Console.ReadLine();
+
+        }
+
+        //[модифікатор доступу] [static \ пусто] [void] Ім'я(параметри)
+        public static void SaySomething(string name)
+        {
+            Console.WriteLine($"Hello {name}!");
+        }
+
+        public static int Add(int a, int b = 1)
+        {           
+            return a + b;
+        }
+
+        public static double Add(double a, double b)
+        {
+            return a + b;
+        }
+
+        public static string Add(string a, string b)
+        {
+            return a + b;
+        }
+    }
 
 
-            //double a = 9;
-            //double b = 2;
-            //a += 5; //=  a = a + 5
-            //a--;
+    /// <summary>
+    ///  КЛАС
+    /// </summary>
+    class Book 
+    {
+        //Поля
+        private string title;
+        private string author;
+        private double price;
 
-            //Console.WriteLine(Math.Sqrt(a)); //корінь
-            //Console.WriteLine(Math.Pow(a, b)); // до степеня
-            //Console.WriteLine(Math.Abs(a)); // модуль
-
-            //double c = 9.23;
-            //Console.WriteLine(Math.Round(c)); // округлення
-            //Console.WriteLine(Math.Floor(c)); // округлення до меншого
-            //Console.WriteLine(Math.Ceiling(c)); // округлення до більшого
-
-            //Math.Min(a, b);
-            //Math.Max(a, b);
-
-            //Console.WriteLine($"gg:");
-
-            //Random rnd  = new Random();
-            //int rndNumb = rnd.Next(1,11);
-
-            //Console.WriteLine("Улюблене число:");
-
-            //Console.WriteLine("Твоє число 1: " + number);
-            //Console.WriteLine("Твоє число 2: {0}, {1}", number, number);
-            //Console.WriteLine($"Твоє число 3: {number}");
-            Console.WriteLine($"Перше число");
-            int a = Convert.ToInt32(Console.ReadLine());
-
-            Console.WriteLine($"Друге число");
-            int b = Convert.ToInt32(Console.ReadLine());
-
-            if (a > b | a < b)
-                Console.WriteLine("Число більше!");
-            else if (a == b)
+        //Властивості
+        public string Title
+        {
+            get { return title; }
+            set { title = value; }
+        }
+        public int Price
+        {
+            get { return Convert.ToInt16(price); }
+            set 
             {
-                Console.WriteLine("Вони рівні!!!");
+                if (value >= 0)
+                {
+                    price = Convert.ToDouble(value);
+                }
             }
-            else
-            {
-                Console.WriteLine("Число менше!");
-            }
+        }
 
-            //Console.WriteLine($"число");
-            //int b = Convert.ToInt32(Console.ReadLine());
+        //Конструктори
+        public Book()
+        {
+            title = "Невідома назва";
+            author = "Невідомий автор";
+            price = 0;
+        }
+        public Book(string title, string author)
+        {
+            this.title = title;
+            this.author = author;
+            price = 0;
+        }
+        public Book(string title, string author, double price)
+        {
+            this.title = title;
+            this.author = author;
+            this.price = price;
+        }
 
-            //switch (b) { 
-            //    case 0:
-            //        Console.WriteLine("Це 0!");
-            //        break;
-            //    case 1:
-            //        Console.WriteLine("Це 1!");
-            //        break;
-            //    default: Console.WriteLine("Не то!");
-            //        break;
-            //}
+        //Методи
+        public void PrintInfo()
+        {
+            Console.WriteLine($"Назва: {title}, Автор: {author}, Ціна: {price} грн");
+        }
 
-            //Console.ReadLine();
-
+        public void Discount()
+        {
+            price = price * 0.95;
         }
     }
 }
