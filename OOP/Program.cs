@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace OOP
 {
@@ -11,124 +12,133 @@ namespace OOP
     {
         static void Main(string[] args)
         {
-            //МЕТОД З ПАРАМЕТРОМ
-            //SaySomething("Maksym");
-            //SaySomething("Andriy");
+            //УНАСЛІДУВАННЯ
+            //BaseClass e1 = new BaseClass();
+            //e1.ShowMessage();
 
-            //МЕТОД З ПАРАМЕТРОМ ЗА ЗАМОВЧУВАННЯМ
-            //int sum1 = Add(5);
-            //SaySomething(Convert.ToString(sum1));
+            //ChildClass e2 = new ChildClass();
+            //e2.AnotherMessage();
+            //e2.ShowMessage();
 
-            //ПЕРЕВАНТАЖЕНИЙ МЕТОД (INT)
-            //int sum2 = Add(5,7);
-            //SaySomething(Convert.ToString(sum2));
+            //ВИКЛИК BASE КОНСТРУКТОРА + OVERRIDE
+            //Animal[] animals = new Animal[]
+            //{
+            //    new Dog("Red", "Rex"),
+            //    new Cat("Silver"),
+            //    new Animal("OOOO")
+            // };
 
-            //ПЕРЕВАНТАЖЕНИЙ МЕТОД (DOUBLE)
-            //double sum3 = Add(5.65, 7.21);
-            //SaySomething(Convert.ToString(sum3));
+            //foreach (Animal animal in animals)
+            //{
+            //    animal.MakeSound();
+            //}
 
-            //ПЕРЕВАНТАЖЕНИЙ МЕТОД (STRING)
-            //string sum4 = Add("1", "4");
-            //SaySomething(sum4);
+            //АБСТРАКТНІСТЬ
+            //Dog dog = new Dog("Black", "Rex");
+            //dog.MakeSound();
 
-            Book firstBook = new Book();
-            firstBook.PrintInfo();
+            //ІНКАПСУЛЯЦІЯ
+            Student student = new Student();
+            //student.Age = -10; //помилка
+            student.Age = 10;
+            student.Score = 55;
 
-            Book secondBook = new Book("OOП", "Deineka Maksym");
-            secondBook.PrintInfo();
 
-            Book thirdBook = new Book("OOП 2.0", "Vinnychuk Igor", 500);
-            thirdBook.PrintInfo();
-
-            secondBook.Price = 45;
-            secondBook.PrintInfo();
-            secondBook.Discount();
-            secondBook.PrintInfo();
 
             Console.ReadLine();
 
         }
 
-        //[модифікатор доступу] [static \ пусто] [void] Ім'я(параметри)
-        public static void SaySomething(string name)
+        //УНАСЛІДУВАННЯ
+        class BaseClass
         {
-            Console.WriteLine($"Hello {name}!");
-        }
-
-        public static int Add(int a, int b = 1)
-        {           
-            return a + b;
-        }
-
-        public static double Add(double a, double b)
-        {
-            return a + b;
-        }
-
-        public static string Add(string a, string b)
-        {
-            return a + b;
-        }
-    }
-
-
-    /// <summary>
-    ///  КЛАС
-    /// </summary>
-    class Book 
-    {
-        //Поля
-        private string title;
-        private string author;
-        private double price;
-
-        //Властивості
-        public string Title
-        {
-            get { return title; }
-            set { title = value; }
-        }
-        public int Price
-        {
-            get { return Convert.ToInt16(price); }
-            set 
+            public void ShowMessage()
             {
-                if (value >= 0)
-                {
-                    price = Convert.ToDouble(value);
-                }
+                Console.WriteLine("Hey! It`s Base class");
             }
         }
 
-        //Конструктори
-        public Book()
+        class ChildClass : BaseClass
         {
-            title = "Невідома назва";
-            author = "Невідомий автор";
-            price = 0;
-        }
-        public Book(string title, string author)
-        {
-            this.title = title;
-            this.author = author;
-            price = 0;
-        }
-        public Book(string title, string author, double price)
-        {
-            this.title = title;
-            this.author = author;
-            this.price = price;
+            public void AnotherMessage()
+            {
+                Console.WriteLine("Hey! It`s Child class");
+            }
         }
 
-        //Методи
-        public void PrintInfo()
+        //ВИКЛИК BASE КОНСТРУКТОРА + OVERRIDE
+        abstract class Animal
         {
-            Console.WriteLine($"Назва: {title}, Автор: {author}, Ціна: {price} грн");
+            public string Color;
+
+            public Animal(string color)
+            {
+                Color = color;
+            }
+
+            //public virtual void MakeSound() 
+            //{
+            //    Console.WriteLine("Animal sound");
+            //}
+
+            public abstract void MakeSound();
         }
 
-        public void Discount()
+        class Dog : Animal
         {
-            price = price * 0.95;
+            public string Name;
+
+            public Dog(string color, string name) : base(color)
+            {
+                Name = name;
+            }
+
+            public override void MakeSound()
+            {
+                Console.WriteLine("Wooof");
+            }
+        }
+
+        class Cat : Animal
+        {
+            public Cat(string color) : base(color) { }
+
+            public override void MakeSound()
+            {
+                Console.WriteLine("MEOWWW");
+            }
+        }
+
+        //ІНКАПСУЛЯЦІЯ
+        //ТАК НЕ РОБІТЬ! ТУТ МОЖНА ВКАЗАТИ ВІК -10
+        //public class Student
+        //{
+        //    public string Name;
+        //    public int Age;
+        //}
+
+        //ТАК РОБІТЬ!
+        public class Student
+        {
+            public int Age
+            {
+                get { return Age; }
+                set
+                {
+                    if (value > 0 && value < 120)
+                    {
+                        Age = value;
+                    }
+                    else 
+                    {
+                        Console.WriteLine("Ти шо, тю тю?");
+                    }
+                }
+            }
+            
+            //АВТОМАТИЧНА ВЛАСТИВІСТЬ
+            public int Score { get; private set; }
+
         }
     }
 }
