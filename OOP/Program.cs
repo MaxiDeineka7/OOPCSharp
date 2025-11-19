@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,105 +11,112 @@ namespace OOP
     {
         static void Main(string[] args)
         {
-            // проста програма
-            /*
-             * rkgkrjg
-             * grg
-             * rg
-             * grgr
-             */
+            //МАСИВ
+            int[] numbers = { 3, 454, 3, 3445, 12 };
+            int[] numbers2 = new int[5];
+            numbers2[0] = 23;
 
-            //тип_даних ім'я змінної;
-            int value;
+            //КОЛЕКЦІЇ
+            //LIST - список
+            List<string> store = new List<string>();
+            store.Add("Помідори");
+            store.Add("Сир");
+            store.Add("Молоко");
 
-            // назва змінної - починається з літери або _
-            // може містити будь-які символи, цифри та знак _
-            //string address;
-            //int value;
-            //int Value = 10;
-            //int myFirstValue;
-            //value = 5;
-            //Value = 5;
-            //Console.WriteLine(value);
+            store.Remove("Сир");
+            //store.RemoveAt(0); - видаляє по індексу
+            //store.Find(); - шукає індекс елементу
+            //store.Contains(); - є чи немає
 
-            //bool a1 = (3 < 6) ^ (4<8); 
-
-            //int a = 5;
-            //int b = 10;
-            //int result = a / b;
-            //Console.WriteLine($"gg: {result}");
-
-            //byte x = 2;
-            //byte y = 2;
-            //bool h = x >= y;
-
-            //bool l = !h;
-
-            //Конвертація
-            //int number = Convert.ToInt32(Console.ReadLine());
-            //float number2 = float.Parse(Console.ReadLine());
-
-
-            //double a = 9;
-            //double b = 2;
-            //a += 5; //=  a = a + 5
-            //a--;
-
-            //Console.WriteLine(Math.Sqrt(a)); //корінь
-            //Console.WriteLine(Math.Pow(a, b)); // до степеня
-            //Console.WriteLine(Math.Abs(a)); // модуль
-
-            //double c = 9.23;
-            //Console.WriteLine(Math.Round(c)); // округлення
-            //Console.WriteLine(Math.Floor(c)); // округлення до меншого
-            //Console.WriteLine(Math.Ceiling(c)); // округлення до більшого
-
-            //Math.Min(a, b);
-            //Math.Max(a, b);
-
-            //Console.WriteLine($"gg:");
-
-            //Random rnd  = new Random();
-            //int rndNumb = rnd.Next(1,11);
-
-            //Console.WriteLine("Улюблене число:");
-
-            //Console.WriteLine("Твоє число 1: " + number);
-            //Console.WriteLine("Твоє число 2: {0}, {1}", number, number);
-            //Console.WriteLine($"Твоє число 3: {number}");
-            Console.WriteLine($"Перше число");
-            int a = Convert.ToInt32(Console.ReadLine());
-
-            Console.WriteLine($"Друге число");
-            int b = Convert.ToInt32(Console.ReadLine());
-
-            if (a > b | a < b)
-                Console.WriteLine("Число більше!");
-            else if (a == b)
-            {
-                Console.WriteLine("Вони рівні!!!");
+            foreach (string item in store) 
+            { 
+                Console.WriteLine(item);
             }
-            else
-            {
-                Console.WriteLine("Число менше!");
+            Console.ReadLine();
+
+
+            //Dictionary - словник
+            Dictionary<int, string> number = new Dictionary<int, string>();
+            number.Add(1, "One");
+            number.Add(2, "Two");
+            number.Add(3, "Three");
+
+            Dictionary<string, int> items = new Dictionary<string, int>();
+            items.Add("Bananas", 34);
+            items.Add("Apples", 12);
+            items.Add("Potato", 55);
+
+            Console.WriteLine(items["Bananas"]); //34
+
+            items["Bananas"] = 65;
+
+            Console.WriteLine(items["Bananas"]); //65
+
+            items.ContainsKey("Bananas");
+
+
+            //STACK<T>
+            Stack<string> history = new Stack<string>();
+            history.Push("google.com");
+            history.Push("gmail.com");
+            history.Push("github.com");
+
+            Console.WriteLine(history.Pop());
+            Console.WriteLine(history.Peek());
+
+            //QUEUE<T>
+            Queue<string> clients = new Queue<string>();
+            clients.Enqueue("Client 1");
+            clients.Enqueue("Client 2");
+
+            Console.WriteLine(clients.Dequeue()); //Client 1
+
+
+            //HASHSET<T>
+            HashSet<int> numbers1 = new HashSet<int>();
+            numbers1.Add(1);
+            numbers1.Add(1); //не додасть
+            numbers1.Add(2);
+
+            numbers1.Remove(1);
+
+            bool isPresent = numbers1.Contains(2); //є
+
+
+
+            //REF та OUT
+            int a = 5;
+            int b = 3;
+
+            AddOne(ref a);
+            
+            Console.WriteLine(AddOne(a, b));
+            Console.WriteLine(a);
+
+            if (TryDivide(5, 2, out int res))
+            { 
+                Console.WriteLine(res);
             }
 
-            //Console.WriteLine($"число");
-            //int b = Convert.ToInt32(Console.ReadLine());
+        }
 
-            //switch (b) { 
-            //    case 0:
-            //        Console.WriteLine("Це 0!");
-            //        break;
-            //    case 1:
-            //        Console.WriteLine("Це 1!");
-            //        break;
-            //    default: Console.WriteLine("Не то!");
-            //        break;
-            //}
+        //ref
+        public static void AddOne(ref int a)
+        {
+            a++;
+        }
 
-            //Console.ReadLine();
+        //out
+        public static bool TryDivide(int a, int b, out int result)
+        { 
+            if (b == 0) 
+            {
+                result = 0;
+                return false;
+            }
 
+            result = a / b;
+            return true;
         }
     }
 }
